@@ -20,16 +20,13 @@ build:
     volumes:
       - /packages:/packages
     commands:
-      - apt-get update
-      - apt-get install /packages/$(basename $DRONE_REPO)/*.deb
+      - echo "Skipping installation..."
   deploy:
     image: pardus/pardus-test
     volumes:
       - /packages:/packages
     commands:
-      - apt-get update
-      - echo "TODO deployment container (pardus/pardus-deploy) is yet to be prepared"
       - ls -al /packages/$(basename $DRONE_REPO)
-      - echo "deployment commands go here"
+      - echo "DONE"
 branches:
   - master
